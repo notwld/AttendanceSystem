@@ -16,3 +16,14 @@ Install dependencies using pip.
 ```bash
 pip install -r requirements.txt
 ```
+# Runing the Application
+Run your application using,
+```bash
+uvicorn main:app --reload
+```
+`Note: --reload will allow your app to restart automatically on changes to the code`
+
+Now go to `http://127.0.0.1:8000/docs` to see the automatic interactive API documentation (provided by Swagger UI).
+
+# Important Links
+Documentation: https://fastapi.tiangolo.com
