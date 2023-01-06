@@ -1,4 +1,4 @@
-# fast-testing
+# Getting Started
 FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
 The key features are:
 
@@ -10,3 +10,9 @@ The key features are:
 - Short: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
 - Robust: Get production-ready code. With automatic interactive documentation.
 - Standards-based: Based on (and fully compatible with) the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
+
+# Dependencies
+Install dependencies using pip.
+`bash
+pip install -r requirements.txt
+`
