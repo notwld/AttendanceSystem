@@ -13,6 +13,6 @@ The key features are:
 
 # Dependencies
 Install dependencies using pip.
-`bash
+```bash
 pip install -r requirements.txt
-`
+```
