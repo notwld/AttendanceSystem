@@ -1,4 +1,4 @@
-# Getting Started
+# FastAPI
 FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
 The key features are:
 
@@ -16,7 +16,7 @@ Install dependencies using pip.
 ```bash
 pip install -r requirements.txt
 ```
-# Runing the Application
+# Getting Started
 Run your application using,
 ```bash
 uvicorn main:app --reload
