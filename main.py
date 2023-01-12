@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+app.title = "Courses Fast CURD"
 
 app.add_middleware(
     CORSMiddleware,
