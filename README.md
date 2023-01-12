@@ -25,7 +25,7 @@ uvicorn main:app --reload
 
 Now go to `http://127.0.0.1:8000/docs` to see the automatic interactive API documentation (provided by Swagger UI).
 
-[](https://github.com/notwld/fast-testing/blob/master/md/ss.png)
+![ss](https://github.com/notwld/fast-testing/blob/master/md/ss.png?raw=true)
 
 # Important Links
 Documentation: https://fastapi.tiangolo.com
