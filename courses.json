@@ -1,0 +1,70 @@
+{
+    "courses":[
+        {
+        "id": 1,
+    "code": "CS101",
+    "course_detail": {
+        "id": 1,
+        "name": "Introduction to Computer Science",
+        "credits": 3,
+        "description": "This course provides an introduction to the intellectual enterprises of computer science and the art of programming."
+    },
+    "students": [
+        {
+            "id": 1,
+            "name": "Muhammad Waleed",
+            "email": "mwfarrukh@gmail.com",
+            "rollno": "20b-115-se",
+            "major":"Software Engineering"
+        },
+        {
+            "id": 2,
+            "name": "Farhan Ali",
+            "email": "farhanali@gmail.com",
+            "rollno": "20b-055-se",
+            "major":"Software Engineering"
+        },
+        {
+            "id": 3,
+            "name": "Bajwa",
+            "email": "bajwa@gmail.com",
+            "rollno": "20b-017-se",
+            "major":"Software Engineering"
+        }
+    ]
+},
+{
+    "id": 2,
+    "code": "C222",
+    "course_detail": {
+        "name": "Data Communication and Computer Networks",
+        "credits": 3,
+        "id": 1,
+        "description": "This course provides an introduction of computer networks."
+    },
+    "students": [
+        {
+            "id": 1,
+            "name": "Muhammad Waleed",
+            "email": "mwfarrukh@gmail.com",
+            "rollno": "20b-115-se",
+            "major":"Software Engineering"
+        },
+        {
+            "id": 2,
+            "name": "Farhan Ali",
+            "email": "farhanali@gmail.com",
+            "rollno": "20b-055-se",
+            "major":"Software Engineering"
+        },
+        {
+            "id": 3,
+            "name": "Bajwa",
+            "email": "bajwa@gmail.com",
+            "rollno": "20b-017-se",
+            "major":"Software Engineering"
+        }
+    ]
+}
+    ]
+}

@@ -1,110 +1,30 @@
-from typing import Union
 from fastapi import FastAPI
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from starlette.responses import RedirectResponse
+
+from database import SessionLocal, engine
+
+import json
+
+import models
+from schema import *
 
 app = FastAPI()
 app.title = "Courses Fast CURD"
 
+models.Base.metadata.create_all(bind=engine)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=True,
 )
 
 
-class Student(BaseModel):
-    id: int
-    name: str
-    email: str
-    rollno: str
-    major: str
-
-
-class CourseDetail(BaseModel):
-    id: int
-    name: str
-    description: str
-    credits: int
-
-
-class Course(BaseModel):
-    id: int
-    code: str
-    course_detail: Union[CourseDetail, None] = None
-    students: Union[Student, None] = None
-
-
-courses = [
-    {
-        "id": 1,
-        "code": "CS101",
-        "course_detail": {
-            "id": 1,
-            "name": "Introduction to Computer Science",
-            "credits": 3,
-            "description": "This course provides an introduction to the intellectual enterprises of computer science and the art of programming.",
-        },
-        "students": [
-            {
-                "id": 1,
-                "name": "Muhammad Waleed",
-                "email": "mwfarrukh@gmail.com",
-                "rollno": "20b-115-se",
-                "major":"Software Engineering"
-            },
-            {
-                "id": 2,
-                "name": "Farhan Ali",
-                "email": "farhanali@gmail.com",
-                "rollno": "20b-055-se",
-                "major":"Software Engineering"
-            },
-            {
-                "id": 3,
-                "name": "Bajwa",
-                "email": "bajwa@gmail.com",
-                "rollno": "20b-017-se",
-                "major":"Software Engineering"
-            },
-        ]
-    },
-    {
-        "id": 2,
-        "code": "C222",
-        "course_detail": {
-            "name": "Data Communication and Computer Networks",
-            "credits": 3,
-            "id": 1,
-            "description": "This course provides an introduction of computer networks.",
-        },
-        "students": [
-            {
-                "id": 1,
-                "name": "Muhammad Waleed",
-                "email": "mwfarrukh@gmail.com",
-                "rollno": "20b-115-se",
-                "major":"Software Engineering"
-            },
-            {
-                "id": 2,
-                "name": "Farhan Ali",
-                "email": "farhanali@gmail.com",
-                "rollno": "20b-055-se",
-                "major":"Software Engineering"
-            },
-            {
-                "id": 3,
-                "name": "Bajwa",
-                "email": "bajwa@gmail.com",
-                "rollno": "20b-017-se",
-                "major":"Software Engineering"
-            },
-        ]
-    }
-]
+courses = json.loads(open("courses.json").read())["courses"]
 
 
 @app.get("/")
