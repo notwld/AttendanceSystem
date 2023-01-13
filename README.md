@@ -17,6 +17,11 @@ Install dependencies using pip.
 pip install -r requirements.txt
 ```
 # Getting Started
+Create an .env file and define connection string of your database.
+```bash
+DATABASE_URL=(your connection string)
+```
+
 Run your application using,
 ```bash
 uvicorn main:app --reload
