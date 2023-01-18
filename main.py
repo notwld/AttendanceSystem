@@ -1,11 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import Session
-from starlette.responses import RedirectResponse
-
 from database import SessionLocal, engine
 
-import json
+# import json
 
 import models
 from models import *
@@ -30,48 +27,49 @@ app.add_middleware(
 db = SessionLocal()
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/courses")
-async def get_courses():
-    return db.query(Course).all()
-
+@app.post("/courses/")
+def create_course(course: Course):
+    db.add(course)
+    db.commit()
+    db.refresh(course)
+    return course
 
 @app.get("/courses/{course_id}")
-async def get_course(course_id: int):
-    return db.query(Course).filter(Course.id == course_id).first()
+def read_course(course_id: int):
+    course = db.query(Course).filter(Course.id == course_id).first()
+    if course is None:
+        raise HTTPException(status_code=404, detail="Course not found")
+    return course
 
-
-@app.get("/courses/{course_id}/students")
-async def get_students(course_id: int):
-    return db.query(Student).filter(Student.course_id == course_id).all()
-
-
-@app.get("/students")
-async def get_students():
-    return db.query(Student).all()
-
-
-@app.get("/students/{student_id}")
-async def get_student(student_id: int):
-    return db.query(Student).filter(Student.id == student_id).first()
-
-@app.post("/courses")
-async def create_course(c: course_schema):
-    db_course = Course(code=c.code)
-    db.add(db_course)
+@app.put("/courses/{course_id}")
+def update_course(course_id: int, course: Course):
+    db_course = db.query(Course).filter(Course.id == course_id).first()
+    if db_course is None:
+        raise HTTPException(status_code=404, detail="Course not found")
+    db_course.name = course.name
+    db_course.teacher_id = course.teacher_id
+    db_course.time_slot = course.time_slot
+    db_course.capacity = course.capacity
     db.commit()
-    db.refresh(db_course)
     return db_course
 
-@app.post("/courses/course_details")
-async def create_course_detail(c: courseDetail_schema):
-    db_course_detail = CourseDetail(name=c.name, description=c.description, credits=c.credits)
-    db.add(db_course_detail)
+@app.delete("/courses/{course_id}")
+def delete_course(course_id: int):
+    course = db.query(Course).filter(Course.id == course_id).first()
+    if course is None:
+        raise HTTPException(status_code=404, detail="Course not found")
+    db.delete(course)
     db.commit()
-    db.refresh(db_course_detail)
-    return db_course_detail
+    return {"message": "Course deleted"}
 
+@app.get("/courses/")
+def read_courses(skip: int = 0, limit: int = 100):
+    courses = db.query(Course).offset(skip).limit(limit).all()
+    return courses
+
+@app.post("/teachers/")
+def create_teacher(teacher: Teacher):
+    db.add(teacher)
+    db.commit()
+    db.refresh(teacher)
+    return teacher
