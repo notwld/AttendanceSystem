@@ -1,32 +1,46 @@
 from pydantic import BaseModel
 from typing import Union
+class Enrollment(BaseModel):
+    id: int
+    student_id: int
+    course_id: int
+    student: object = None
+    course: object = None
+
+class Manager(BaseModel):
+    id: int
+    name: str
+    email: str
+
+
+
+class Teacher(BaseModel):
+    id: int
+    name: str
+    courses: Course
 
 class Student(BaseModel):
     id: int
     name: str
     email: str
-    rollno: str
-    major: str
-
-    class Config: #takes ORM objects and translate them into responses automatically
-        orm_mode = True
-
-
-class CourseDetail(BaseModel):
-    id: int
-    name: str
-    description: str
-    credits: int
-
-    class Config:
-        orm_mode = True
-
+    courses: Union[Course, Enrollment]
+    attendances: Attendance
 
 class Course(BaseModel):
     id: int
-    code: str
-    course_detail: Union[CourseDetail, None] = None
-    students: Union[Student, None] = None
+    name: str
+    teacher_id: int
+    time_slot: str
+    capacity: int
+    students: Union[Student, Enrollment]
+    teacher: Teacher
 
-    class Config:
-        orm_mode = True
+    
+class Attendance(BaseModel):
+    id: int
+    student_id: int
+    course_id: int
+    date: datetime
+    status: str
+    student: Student
+    course: Course
