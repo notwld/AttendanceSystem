@@ -4,14 +4,14 @@ An institution wants to develop an Attendance Management System, which offer dif
 
 Centre Manager states that:
 
--1	We offer different courses in the institute (namely, Interactive Design and Multimedia, Slick Dot Net Development, Digital Media & Entrepreneurship)
--2	Different teachers are hired by the institute to teach different courses in fixed time slots {Fixed Time means Like 2.5 hrs class twice a week from 7:00pm-9:30pm on Friday and Saturday or 5hrs class in a week from 10am-3:00pm}, a one teacher can teach same course but there is should be no clash between two classes.
--3	A class can be comprise of many students (but limit it to 50 students per class/time slot)
--4	Once a student registered in our portal by the institute staff, then whenever he/she wants to take another course from our institute. He/She do not have to register again. He/She will pay the fee and get enrolled in the course as per suitable time slot.
--5	Now the major change they wants to do in marking of a student attendance is that; teacher itself will mark it. 
--6	Teacher will login to the system, select the course of ongoing class, put the date of day and marked the students present one by one or mark absent.
--8	There will be many formats of the report, which will only accessible to the Center Manager.
--9	There is no need to add financial aspects in this system. A separate module will be create later.
+-	We offer different courses in the institute (namely, Interactive Design and Multimedia, Slick Dot Net Development, Digital Media & Entrepreneurship)
+-	Different teachers are hired by the institute to teach different courses in fixed time slots {Fixed Time means Like 2.5 hrs class twice a week from 7:00pm-9:30pm on Friday and Saturday or 5hrs class in a week from 10am-3:00pm}, a one teacher can teach same course but there is should be no clash between two classes.
+-	A class can be comprise of many students (but limit it to 50 students per class/time slot)
+-	Once a student registered in our portal by the institute staff, then whenever he/she wants to take another course from our institute. He/She do not have to register again. He/She will pay the fee and get enrolled in the course as per suitable time slot.
+-	Now the major change they wants to do in marking of a student attendance is that; teacher itself will mark it. 
+-	Teacher will login to the system, select the course of ongoing class, put the date of day and marked the students present one by one or mark absent.
+-	There will be many formats of the report, which will only accessible to the Center Manager.
+-	There is no need to add financial aspects in this system. A separate module will be create later.
 
 
 # FastAPI
